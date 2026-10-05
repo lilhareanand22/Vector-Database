@@ -20,6 +20,13 @@ query_text = "Hello, world!"
 
 results = collection.query(
     query_texts=[query_text],
-    n_results=1
+    n_results=3
 )
-print(results)
+
+for idx, document in enumerate(results["documents"][0]):
+    doc_id = results["ids"][0][idx]
+    distance = results["distances"][0][idx]
+    print(
+        f"For the query: {query_text}, \n Found simillar document: {document} (ID: {doc_id}, Distance: {distance})"
+    )
+
